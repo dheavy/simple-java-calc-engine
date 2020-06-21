@@ -18,6 +18,23 @@ public class App {
       System.out.print("result = ");
       System.out.println(eq.getResult());
     }
+
+    System.out.println();
+    System.out.print("Using Inheritance:");
+    System.out.println();
+
+    CalculateBase[] calculators = {
+      new Divider(100.0d, 50.0d),
+      new Adder(25.0d, 92.0d),
+      new Substracter(255.0d, 17.0d),
+      new Multiplier(11.0d, 3.0d)
+    };
+
+    for (CalculateBase calc : calculators) {
+      calc.calculate();
+      System.out.print("result=");
+      System.out.println(calc.getResult());
+    }
   }
 
   public static MathEquation create(double leftVal, double rightVal, char opCode) {

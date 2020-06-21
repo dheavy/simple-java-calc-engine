@@ -65,4 +65,15 @@ public class MathEquation {
         result = 0.0d;
     }
   }
+
+  public void execute(double leftVal, double rightVal) {
+    this.setLeftVal(leftVal);
+    this.setRightVal(rightVal);
+    execute();
+  }
+
+  public void execute(int leftVal, int rightVal) {
+    execute(leftVal, rightVal);
+    result = (int) result;
+  }
 }

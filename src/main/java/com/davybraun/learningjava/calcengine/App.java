@@ -3,10 +3,21 @@ package com.davybraun.learningjava.calcengine;
 /** Hello world! */
 public class App {
   public static void main(String... args) {
-    // double[] leftVals = {100.0d, 25.0d, 225.0d, 11.0d};
-    // double[] rightVals = {50.0d, 92.0d, 17.0d, 3.0d};
-    // char[] opCodes = {'d', 'a', 's', 'm'};
-    // double[] results = new double[opCodes.length];
+    // useMathEquation();
+    // useCalculatorBase();
+
+    String[] statements = {
+      "divide 100.0 50.0", "add 25.0 92.0", "subtract 225.0 17.0", "multiply 11.0 3.0"
+    };
+
+    CalculateHelper helper = new CalculateHelper();
+    for (String statement : statements) {
+      helper.process(statement);
+      System.out.println(helper);
+    }
+  }
+
+  public void useMathEquation() {
     MathEquation[] equations = new MathEquation[4];
     equations[0] = create(100.0d, 50.0d, 'd');
     equations[1] = create(25.0d, 92.0d, 'a');
@@ -20,6 +31,9 @@ public class App {
     }
 
     System.out.println();
+  }
+
+  public void useCalculatorBase() {
     System.out.print("Using Inheritance:");
     System.out.println();
 

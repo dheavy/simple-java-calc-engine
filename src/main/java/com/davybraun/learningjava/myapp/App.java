@@ -1,4 +1,13 @@
-package com.davybraun.learningjava.calcengine;
+package com.davybraun.learningjava.myapp;
+
+import com.davybraun.learningjava.calcengine.Adder;
+import com.davybraun.learningjava.calcengine.CalculateBase;
+import com.davybraun.learningjava.calcengine.CalculateHelper;
+import com.davybraun.learningjava.calcengine.Divider;
+import com.davybraun.learningjava.calcengine.InvalidStatementException;
+import com.davybraun.learningjava.calcengine.MathEquation;
+import com.davybraun.learningjava.calcengine.Multiplier;
+import com.davybraun.learningjava.calcengine.Substracter;
 
 /** Hello world! */
 public class App {
@@ -7,13 +16,25 @@ public class App {
     // useCalculatorBase();
 
     String[] statements = {
-      "divide 100.0 50.0", "add 25.0 92.0", "subtract 225.0 17.0", "multiply 11.0 3.0"
+      "add 25.0",
+      "add 25.0 foo",
+      "divide 100.0 50.0",
+      "add 25.0 92.0",
+      "subtract 225.0 17.0",
+      "multiply 11.0 3.0"
     };
 
     CalculateHelper helper = new CalculateHelper();
     for (String statement : statements) {
-      helper.process(statement);
-      System.out.println(helper);
+      try {
+        helper.process(statement);
+        System.out.println(helper);
+      } catch (InvalidStatementException e) {
+        System.out.println(e.getMessage());
+        if (e.getCause() != null) {
+          System.out.println("  Original exception: " + e.getCause().getMessage());
+        }
+      }
     }
   }
 
